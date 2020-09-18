@@ -1,0 +1,10 @@
+bootstrap/cache/*.php
+storage/framework/cache/data
+storage/framework/views/*.php
+storage/logs/
+vendor/
+ecs-project/
+.idea/
+.git/
+.DS_Store
+.env
