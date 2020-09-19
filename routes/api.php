@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\HealthCheckController;
+use App\Http\Controllers\UserProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return [
-        'app'    => config('app.name'),
-        'server' => gethostname(),
-    ];
-});
+Route::get('/', HealthCheckController::class);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->get('/user', UserProfileController::class);
