@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "cleancode-id/laravel-micro",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Lightweight Laravel, built for microservices.",
     "keywords": [
         "framework",
         "laravel"
