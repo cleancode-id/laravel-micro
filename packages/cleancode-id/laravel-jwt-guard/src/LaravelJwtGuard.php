@@ -13,13 +13,15 @@ class LaravelJwtGuard implements Guard
 {
     private $user;
     private $provider;
+    private $publicKey;
     private $decodedToken;
     private $request;
 
     public function __construct(UserProvider $provider, Request $request)
     {
-        $this->provider     = $provider;
-        $this->request      = $request;
+        $this->provider  = $provider;
+        $this->request   = $request;
+        $this->publicKey = env('JWT_PUBLIC_KEY');
 
         $this->authenticate();
     }
@@ -32,10 +34,14 @@ class LaravelJwtGuard implements Guard
      */
     private function authenticate()
     {
-        $publicKey = env('JWT_PUBLIC_KEY');
+        $bearerToken = $this->request->bearerToken();
+
+        if (empty($bearerToken)) {
+            return false;
+        }
 
         try {
-            $this->decodedToken = JwtToken::decode($this->request->bearerToken(), $publicKey);
+            $this->decodedToken = JwtToken::decode($bearerToken, $this->publicKey);
         } catch (Exception $e) {
             throw new AuthenticationException('Token: ' . $e->getMessage());
         }
