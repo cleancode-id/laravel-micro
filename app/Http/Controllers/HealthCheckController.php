@@ -10,7 +10,7 @@ class HealthCheckController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array|\Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {

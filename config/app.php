@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        CleancodeId\LaravelJwtGuard\LaravelJwtGuardServiceProvider::class,
 
         /*
          * Application Service Providers...
