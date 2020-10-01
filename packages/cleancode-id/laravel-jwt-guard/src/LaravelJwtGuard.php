@@ -118,9 +118,12 @@ class LaravelJwtGuard implements Guard
 
         $class = $this->provider->getModel();
 
-        $user        = new $class();
-        $user->id    = $this->decodedToken->sub;
-        $user->name  = $this->decodedToken->name;
+        $user     = new $class();
+        $user->id = $this->decodedToken->sub;
+
+        if (isset($this->decodedToken->name)) {
+            $user->name = $this->decodedToken->name;
+        }
 
         $this->setUser($user);
 
