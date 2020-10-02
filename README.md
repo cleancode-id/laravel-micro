@@ -18,13 +18,13 @@ Lightweight Laravel, built for microservices.
 ## Build, Ship, Run Anywhere
 Build docker image.
 ```
-docker build -t my/service:1.0 .
+docker build -t cleancodeid/service:1.0 .
 ```
 Push to Registry
 ```
-docker push my/service:1.0
+docker push cleancodeid/service:1.0
 ``` 
 Run!
 ```
-docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_HOST="172.17.0.1" my/service:1.0
+docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_HOST="172.17.0.1" cleancodeid/service:1.0
 ```
