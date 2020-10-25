@@ -49,7 +49,7 @@ COPY --chown=nobody . /var/www/html
 COPY --chown=nobody .env.example /var/www/html/.env
 
 # Install composer from the official image
-COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Run composer install to install the dependencies
 RUN composer install --no-cache --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
