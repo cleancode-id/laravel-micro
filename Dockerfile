@@ -33,6 +33,8 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Setup document root
 RUN mkdir -p /var/www/html
+COPY docker/docker-entrypoint.sh docker-entrypoint.sh
+RUN chmod +x docker-entrypoint.sh
 
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /var/www/html && \
@@ -55,15 +57,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-cache --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress && \
     composer dump-autoload --optimize
 
-RUN cd /var/www/html && \
-    php artisan route:cache
-    # php artisan config:cache
-
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
 # Let supervisord start nginx & php-fpm
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
 
 # Configure a healthcheck to validate that everything is up&running
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080
