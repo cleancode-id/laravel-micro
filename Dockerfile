@@ -48,7 +48,6 @@ USER nobody
 # Add application
 WORKDIR /var/www/html
 COPY --chown=nobody . /var/www/html
-COPY --chown=nobody .env.example /var/www/html/.env
 
 # Install composer from the official image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
