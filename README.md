@@ -4,12 +4,13 @@ Lightweight Laravel, built for microservices.
 ## Features
 - PHP 8.
 - Laravel 8.
-- Optimized for micro-API Backend.
+- Optimized for micro-API Backend, large-scale app.
 - Authentication JWT using 3rd party Auth Service - Identity Management & Access Control (Auth0, Keycloak, etc).
 - Unit & Feature Test (To Do).
 - Standard Coding Style & Clean Code.
 - Authorization & Policies (To Do).
 - Docker for containerization & orchestration.
+- Database replication (master-slave) default connection.
 
 ## Setup for Development
 - Run `composer create-project --prefer-dist cleancode-id/laravel-micro`
@@ -27,5 +28,5 @@ docker push cleancodeid/service:1.0
 ``` 
 Run!
 ```
-docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_HOST="172.17.0.1" cleancodeid/service:1.0
+docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_CONNECTION="mysql" -e DB_HOST="172.17.0.1" cleancodeid/service:1.0
 ```
