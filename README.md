@@ -2,6 +2,7 @@
 Lightweight Laravel, built for microservices.
 
 ## Features
+- PHP 8.
 - Laravel 8.
 - Optimized for micro-API Backend.
 - Authentication JWT using 3rd party Auth Service - Identity Management & Access Control (Auth0, Keycloak, etc).
