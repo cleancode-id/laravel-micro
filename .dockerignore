@@ -1,7 +1,7 @@
 bootstrap/cache/*.php
 storage/framework/cache/data
 storage/framework/views/*.php
-storage/logs/
+storage/logs/*.log
 vendor/
 ecs-project/
 .idea/
