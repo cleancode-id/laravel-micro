@@ -1,7 +1,7 @@
 FROM alpine:3.13
 
 LABEL Maintainer="Yoga Hanggara <yohang88@gmail.com>" \
-      Description="Lightweight Laravel app container with Nginx 1.16 & PHP-FPM 8 based on Alpine Linux."
+      Description="Lightweight Laravel app container with Nginx 1.18 & PHP-FPM 8 based on Alpine Linux."
 
 ARG PHP_VERSION="8.0.2-r0"
 
