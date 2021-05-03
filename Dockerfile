@@ -1,20 +1,16 @@
-FROM alpine:3.12
+FROM alpine:3.13
 
 LABEL Maintainer="Yoga Hanggara <yohang88@gmail.com>" \
       Description="Lightweight Laravel app container with Nginx 1.16 & PHP-FPM 8 based on Alpine Linux."
 
-ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
-
-# make sure you can use HTTPS
-RUN apk --update-cache add ca-certificates && \
-    echo "https://dl.bintray.com/php-alpine/v3.12/php-8.0" >> /etc/apk/repositories
+ARG PHP_VERSION="8.0.2-r0"
 
 # Install packages
 RUN apk --update-cache add php8 php8-fpm php8-opcache php8-openssl php8-curl php8-phar php8-session \
-    php8-pdo php8-pdo_mysql php8-mysqli php8-mbstring php8-dom \
+    php8-fileinfo php8-pdo php8-pdo_mysql php8-mysqli php8-mbstring php8-dom \
     nginx supervisor curl
 
-# https://github.com/codecasts/php-alpine/issues/21
+# Symlink php8 => php
 RUN ln -s /usr/bin/php8 /usr/bin/php
 
 # Configure nginx
