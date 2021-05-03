@@ -6,7 +6,7 @@ LABEL Maintainer="Yoga Hanggara <yohang88@gmail.com>" \
 ARG PHP_VERSION="8.0.2-r0"
 
 # Install packages
-RUN apk --update-cache add php8 php8-fpm php8-opcache php8-openssl php8-curl php8-phar php8-session \
+RUN apk --no-cache add php8=${PHP_VERSION} php8-fpm php8-opcache php8-openssl php8-curl php8-phar php8-session \
     php8-fileinfo php8-pdo php8-pdo_mysql php8-mysqli php8-mbstring php8-dom \
     nginx supervisor curl
 
