@@ -168,7 +168,6 @@ return [
          * Package Service Providers...
          */
         Fruitcake\Cors\CorsServiceProvider::class,
-        CleancodeId\LaravelJwtGuard\LaravelJwtGuardServiceProvider::class,
 
         /*
          * Application Service Providers...

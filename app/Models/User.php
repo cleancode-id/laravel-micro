@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class User extends Authenticatable
+/**
+ * @property string $id
+ * @property string $name
+ */
+class User extends Model implements AuthorizableContract
 {
-    use Notifiable;
+    use Notifiable, Authorizable;
 
     public $incrementing = false;
 
