@@ -14,14 +14,14 @@ RUN apk --no-cache add php8=${PHP_VERSION} php8-fpm php8-opcache php8-openssl ph
 RUN ln -s /usr/bin/php8 /usr/bin/php
 
 # Configure nginx
-COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Remove default server definition
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Configure PHP-FPM
-COPY docker/fpm-pool.conf /etc/php8/php-fpm.d/www.conf
-COPY docker/php.ini /etc/php8/conf.d/custom.ini
+COPY docker/php/fpm-pool.conf /etc/php8/php-fpm.d/www.conf
+COPY docker/php/php.ini /etc/php8/conf.d/custom.ini
 
 # Configure supervisord
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -42,7 +42,7 @@ USER nobody
 
 # Add application
 WORKDIR /var/www/html
-COPY --chown=nobody . /var/www/html
+COPY --chown=nobody src/ /var/www/html
 
 # Install composer from the official image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -56,6 +56,3 @@ EXPOSE 8080
 
 # Let supervisord start nginx & php-fpm
 ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
-
-# Configure a healthcheck to validate that everything is up&running
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080
