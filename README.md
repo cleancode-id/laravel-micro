@@ -31,3 +31,11 @@ Run!
 ```
 docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_CONNECTION="mysql" -e DB_HOST="172.17.0.1" my-service:1.0
 ```
+Run as queue worker
+```
+docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_CONNECTION="mysql" -e DB_HOST="172.17.0.1" -e CONTAINER_ROLE="queue" my-service:1.0
+```
+Run as scheduler
+```
+docker run -p 8080:8080 -e APP_NAME="My Service" -e DB_CONNECTION="mysql" -e DB_HOST="172.17.0.1" -e CONTAINER_ROLE="scheduler" my-service:1.0
+```

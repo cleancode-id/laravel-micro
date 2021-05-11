@@ -54,5 +54,5 @@ RUN composer install --no-cache --no-dev --prefer-dist --optimize-autoloader --n
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
-# Let supervisord start nginx & php-fpm
+# Let start
 ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
